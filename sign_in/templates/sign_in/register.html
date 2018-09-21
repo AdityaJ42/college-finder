@@ -1,0 +1,10 @@
+<div style="margin-left: 20px;">
+<h1>Sign Up</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Sign Up</button>
+</form>
+</div>
