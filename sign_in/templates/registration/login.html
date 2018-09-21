@@ -1,15 +1,12 @@
 {% extends "sign_in/base.html" %}
 
 {% block content %}
-<form method="post" id="login">
+<form method="post">
 	{% csrf_token %}
 	<div class="form-group">
-	    <input type="text" class="form-control" id="inputName" placeholder="Username">
+	    <!-- <input type="text" class="form-control" id="inputName" placeholder="Username"> -->
+	    {{ form.as_p }}
    	</div>
-   	<br>
-	<div class="form-group"> 		       	
-		<input type="password" class="form-control" id="inputPassword" placeholder="Password">
-	</div>	
 	<br><br>			        
 	<button type="submit" class="btn btn-primary">Login</button>
 	<br><br>
@@ -17,4 +14,4 @@
 		<p>Don't have an accont? <a href="{% url 'sign_in:register' %}">Sign Up!</a></p>		       
 	</span>		   
 </form>
-{% endblock content %}
+{% endblock %}
