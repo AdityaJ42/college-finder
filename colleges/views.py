@@ -34,8 +34,12 @@ def checker(request):
 		user = request.user
 		profile = Profile.objects.get(user = user)
 		possible_colleges = predictor([[profile.gre, profile.cgpa]])
-		print(possible_colleges)
-		return HttpResponse('<h1>Terminal</h1>')
+		college_list = []
+		for college in possible_colleges:
+			print(college)
+			college_details = College.objects.get(name = college)
+			college_list.append(college_details)
+		return render(request, 'colleges/college_list.html', {'college_list': college_list})
 	else:
 		return redirect('/login/')
 
