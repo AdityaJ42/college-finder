@@ -1,12 +1,20 @@
-<div style="margin-left: 20px;">
+{% extends "sign_in/base.html" %}
 
-<h1>Login</h1>
-
-<form method='post'>
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
+{% block content %}
+<form method="post" id="login">
+	{% csrf_token %}
+	<div class="form-group">
+	    <input type="text" class="form-control" id="inputName" placeholder="Username">
+   	</div>
+   	<br>
+	<div class="form-group"> 		       	
+		<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+	</div>	
+	<br><br>			        
+	<button type="submit" class="btn btn-primary">Login</button>
+	<br><br>
+	<span class="register">
+		<p>Don't have an accont? <a href="{% url 'sign_in:register' %}">Sign Up!</a></p>		       
+	</span>		   
 </form>
-
-<h3>Haven't Signed Up Yet? <a href="{% url 'sign_in:register' %}">Click Here</a> To Register</h3>
-</div>
+{% endblock content %}

@@ -1,0 +1,113 @@
+body { 
+	background-image:url("./images/background1.jpg") ; 
+	background-repeat:no-repeat; 
+	background-position:center; 
+	background-size:cover; 
+  background-attachment: fixed;
+	padding:10px;
+}
+
+.form-heading { 
+	color:#fff; 
+	font-size:23px;
+}
+
+.panel h2 { 
+	font-family: 'Lobster', cursive;
+	color:#444444; 
+	font-size:30px; 
+}
+
+.panel p { 
+	color:#777777; 
+	font-size:14px; 
+	margin-bottom:30px; 
+	line-height:24px;
+}
+
+.login-form .form-control {
+  	background: #f7f7f7 none repeat scroll 0 0;
+  	border: 1px solid #d4d4d4;
+  	border-radius: 4px;
+  	font-size: 16px;
+  	height: 50px;
+  	line-height: 50px;
+}
+
+.main-div {
+  	background: #ffffff none repeat scroll 0 0;
+  	border-radius: 2px;
+  	margin: 10px auto 30px auto;
+  	max-width: 38%;
+  	padding: 70px 70px 70px 71px;
+}
+
+.form-group {
+  display: inline-block;
+}
+
+.form-group span{
+  display: table-cell;
+}
+
+.form-group span input{
+  padding: 6px 12px;
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.login-form .form-group {
+  	margin-bottom:10px;
+}
+
+.login-form { 
+	text-align:center;
+}
+
+.register {
+  	text-align: left; 
+  	margin-bottom:30px;
+}
+
+.register a {
+	display: inline-block;
+  	color: #777777;
+  	font-size: 14px;
+  	text-decoration: underline;
+}
+
+.login-form  .btn.btn-primary {
+  	background: #f0ad4e none repeat scroll 0 0;
+  	border-color: #f0ad4e;
+  	color: #ffffff;
+  	font-size: 14px;
+  	width: 100%;
+  	height: 50px;
+  	line-height: 50px;
+  	padding: 0;
+}
+
+.botto-text {
+  	color: #ffffff;
+  	font-size: 14px;
+  	margin: auto;
+}
+
+.login-form .btn.btn-primary.reset {
+  	background: #ff9900 none repeat scroll 0 0;
+}
+
+.back { 
+	text-align: left; 
+	margin-top:10px;
+}
+
+.back a {
+	color: #444444; 
+	font-size: 16px;
+	text-decoration: none;
+}

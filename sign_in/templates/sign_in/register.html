@@ -1,10 +1,59 @@
-<div style="margin-left: 20px;">
-<h1>Sign Up</h1>
+{% extends "sign_in/base.html" %}
 
-<form method="post">
-  {% csrf_token %}
-  {{ user_form.as_p }}
-  {{ profile_form.as_p }}
-  <button type="submit">Sign Up</button>
+{% block content %}
+<form method="post" id="register">
+	<div style="display: table;">
+	{% csrf_token %}
+	<div class="back">
+		<a href="/login/"><span class="oi oi-arrow-circle-left"></span> Back</a>
+	</div>
+	<br>	    
+
+	{% for field in user_form %}
+		<div class="form-group" style="display: table-row;">
+<!-- 			<div>
+				<span class="text-danger la">{{ field.errors }}</span>
+			</div>  -->
+			<span>{{ field.label_tag }}</span>
+			<span>{{ field }}</span>
+		</div>
+		<br>
+	{% endfor %}
+	{% for field in profile_form %}
+		<div class="form-group" style="display: table-row;">
+<!-- 			<div>
+				<span class="text-danger la">{{ field.errors }}</span>
+			</div>  -->
+			<span>{{ field.label_tag }}</span>
+			<span>{{ field }}</span>
+		</div>
+		<br>
+	{% endfor %}
+
+<!-- 	<div class="form-group">
+		<input type="text" class="form-control" id="name" placeholder="Name">
+	</div>
+	<div class="form-group">
+		<input type="email" class="form-control" id="email" placeholder="Email-ID">
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" id="username" placeholder="Username">
+	</div>
+	<div class="form-group"> 		       	
+		<input type="password" class="form-control" id="password" placeholder="Password">
+	</div>	
+	<div class="form-group">
+		<input type="number" class="form-control" id="gre" placeholder="GRE Score">
+	</div>	
+	<div class="form-group">
+		<input type="number" class="form-control" id="inputToefl" placeholder="TOEFL Score">
+	</div>	
+	<div class="form-group">
+		<input type="number" class="form-control" id="cgpa" placeholder="Enter CGPA">
+	</div> -->	
+	</div>		        		        	       			        				        		
+	<br><br>		        
+	<button type="submit" class="btn btn-primary">Register</button>
+	<br><br>	   
 </form>
-</div>
+{% endblock content %}

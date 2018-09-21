@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from sign_in import views
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name = 'login'),
     url(r'^logout/', auth_views.logout, name = 'logout'),
-    url(r'^sign_in/', include('sign_in.urls', namespace='sign_in')),
+    url(r'^sign_in/', include(('sign_in.urls', 'sign_in'), namespace='sign_in')),
     url(r'^$', views.home, name = 'home')
 ]
+
