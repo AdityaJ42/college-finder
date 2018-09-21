@@ -36,7 +36,6 @@ def checker(request):
 		possible_colleges = predictor([[profile.gre, profile.cgpa]])
 		college_list = []
 		for college in possible_colleges:
-			print(college)
 			college_details = College.objects.get(name = college)
 			college_list.append(college_details)
 		return render(request, 'colleges/college_list.html', {'college_list': college_list})
@@ -51,7 +50,31 @@ def add_college(request):
 
 			if college_form.is_valid():
 				college_form.save()
-				return redirect('/')
+				return redirect('colleges:add')
 		else:
 			college_form = CollegeForm()
 		return render(request, 'colleges/add.html', {'college_form': college_form})
+
+
+def profile(request):
+	if request.user.is_authenticated:
+		user = request.user
+		profile = Profile.objects.get(user = user)
+		return render(request, 'sign_in/profile.html', {'profile': profile})
+	return redirect('login/')
+
+
+def update(request):
+	if request.user.is_authenticated:
+		if request.method == 'POST':
+			profile = Profile.objects.get(user = request.user)
+
+			new_score = request.POST.get('score')
+			new_cgpa = request.POST.get('cgpa')
+
+			profile.gre = new_score
+			profile.cgpa = new_cgpa
+			profile.save()
+			return redirect('sign_in:profile')
+		return redirect('sign_in:update')
+	return redirect('login/')

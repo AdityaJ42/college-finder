@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^login/', auth_views.login, name = 'login'),
     url(r'^logout/', auth_views.logout, name = 'logout'),
     url(r'^sign_in/', include('sign_in.urls', namespace='sign_in')),
-    url(r'^colleges/', include('colleges.urls', namespace='college')),
+    url(r'^colleges/', include('colleges.urls', namespace='colleges')),
     url(r'^$', views.home, name = 'home'),
 ]
 
