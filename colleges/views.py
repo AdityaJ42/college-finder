@@ -4,6 +4,8 @@ from os.path import isfile, join
 import pickle
 from sign_in.models import Profile
 from django.http import HttpResponse
+from .models import College
+from .forms import CollegeForm
 
 
 def predictor(student):
@@ -36,3 +38,16 @@ def checker(request):
 		return HttpResponse('<h1>Terminal</h1>')
 	else:
 		return redirect('/login/')
+
+
+def add_college(request):
+	if request.user.is_authenticated and request.user.is_superuser:
+		if request.method == "POST":
+			college_form = CollegeForm(request.POST)
+
+			if college_form.is_valid():
+				college_form.save()
+				return redirect('/')
+		else:
+			college_form = CollegeForm()
+		return render(request, 'colleges/add.html', {'college_form': college_form})

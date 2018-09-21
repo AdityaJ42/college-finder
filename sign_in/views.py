@@ -6,7 +6,10 @@ from django.http import HttpResponse
 from .forms import ProfileForm, RegistrationForm
 
 def home(request):
-	return HttpResponse('<h1>Welcome {{ request.user }}</h1>')
+	if request.user.is_authenticated:
+		profile = Profile.objects.get(user = request.user)
+		return HttpResponse("<h1>Welcome {}</h1>".format(profile))
+	return HttpResponse("Hello")
 
 def register(request):
 	if request.method == "POST":
