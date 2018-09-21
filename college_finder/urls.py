@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from sign_in import views
 
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^login/', auth_views.login, name = 'login'),
     url(r'^logout/', auth_views.logout, name = 'logout'),
     url(r'^sign_in/', include('sign_in.urls', namespace='sign_in')),
+    url(r'^$', views.home, name = 'home')
 ]
