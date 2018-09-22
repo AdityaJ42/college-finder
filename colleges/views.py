@@ -54,21 +54,42 @@ def add_college(request):
 		return render(request, 'colleges/add.html', {'college_form': college_form})
 
 def search(request):
+	print('in search')
+
 	if request.user.is_authenticated:
 		user = request.user
 		colleges = checker(user)
 		colleges_copy = []
-		# print(len(colleges_copy))
-		maxCost = request.POST.get('maxRange')
-		# print(colleges_copy)
-		if maxCost is not None:
-			maxCost = (int)(maxCost)
+		colleges_copy1 = []
 
+		maxCost = location = None
+		
+		maxCost = request.POST.get('maxRange')
+		location = request.POST.get('location')
+		print(maxCost, location)
+		if maxCost is None and location is None:
+			colleges_copy = colleges
+
+		elif maxCost is not None and location is None:
+			maxCost = (int)(maxCost)
 			for college in colleges:
-				# print(college.average_cost, maxCost, college)
 				if college.average_cost <= maxCost:
 					colleges_copy.append(college)
+
+		elif maxCost is None or maxCost is '' and location is not None:
+			for college in colleges:
+				if location.lower() in college.location.lower():
+					colleges_copy.append(college)
+
 		else:
-			colleges_copy = colleges
-		print(colleges_copy)
+			maxCost = (int)(maxCost)
+			for college in colleges:
+				if college.average_cost <= maxCost:
+					colleges_copy1.append(college)
+
+			for college in colleges_copy1:
+				if location.lower() in college.location.lower():
+					colleges_copy.append(college)
+
 		return render(request, 'colleges/college_list.html', {'colleges_copy': colleges_copy})
+	return redirect('login')

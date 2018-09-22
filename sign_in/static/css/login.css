@@ -1,5 +1,5 @@
 body { 
-	background-image:url("./images/background1.jpg") ; 
+	background-image:url("/static/images/background1.jpg") ; 
 	background-repeat:no-repeat; 
 	background-position:center; 
 	background-size:cover; 
@@ -16,6 +16,7 @@ body {
 	font-family: 'Lobster', cursive;
 	color:#444444; 
 	font-size:30px; 
+  text-align: center;
 }
 
 .panel p { 
@@ -47,6 +48,28 @@ body {
 
 .form-group span{
   display: table-cell;
+}
+
+input#id_username {
+  width: auto;
+  padding: 6px 12px;
+  background: #f7f7f7;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 50px;
+  line-height: 50px; 
+}
+
+#id_password {
+  width: auto;
+  padding: 6px 12px;
+  background: #f7f7f7;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 50px;
+  line-height: 50px;
 }
 
 .form-group span input{

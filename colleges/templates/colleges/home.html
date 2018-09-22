@@ -39,14 +39,20 @@
 		            <li>
 		            	<a href="{% url 'sign_in:update' %}">Update Profile</a>
 		            </li>
+		            <br>
+		            <li>
+		            	<a href="{% url 'logout' %}">Logout</a>
+		            </li>		            
 		            <br><br>	          
 		            <p>Filter By:</p>
 		            <li>
-		                <span>Budget</span>	      
-			            <form method="post">
+		                <span>Budget (In lakhs)</span>	      
+			            <form method="post" action="{% url 'colleges:search' %}">
 			            	{% csrf_token %}
 			            	<li><input id="end" type="text" name="maxRange" placeholder="End"></li><br>
-			            	<li><a href="{% url 'colleges:search' %}"><button type="submit" class="btn">Search</button></a>
+			            	<span>Location</span>	 
+			            	<li><input id="loc" type="text" name="location" placeholder="location"></li><br>
+			            	<li><button class="btn btn-primary">Search</button></li>
 			            </form>
 		            </li>
 		            

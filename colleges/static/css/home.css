@@ -43,18 +43,20 @@ a, a:hover, a:focus {
   	height: 100%;
 }
 
+.card-link {
+    color: blue;
+}
+
 .card {
 	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 300px;
-	height: auto;
-	display: flex;
+	width: max-content;
+	height: 300px;
+	display: block;
 	box-shadow: 10px 10px 5px grey;
 }
 
 #sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
+    /* dn't forget to add all the previously mentioned styles here too */
 /*    background: #EE82EE;*/
     color:black;
     transition: all 0.3s;
@@ -91,7 +93,6 @@ ul li form li input{
 
 #sidebar ul li a:hover {
     color: #7386D5;
-    background: #fff;
     padding: 5px;
     border-radius: 5px;
     margin-right: 10px;
