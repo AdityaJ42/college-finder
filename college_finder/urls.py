@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name = 'login'),
     url(r'^logout/', auth_views.logout, name = 'logout'),
-    url(r'^sign_in/', include('sign_in.urls', namespace='sign_in')),
-    url(r'^colleges/', include('colleges.urls', namespace='colleges')),
+    url(r'^sign_in/', include(('sign_in.urls', 'sign_in'), namespace='sign_in')),
+    url(r'^colleges/', include(('colleges.urls', 'colleges'), namespace='colleges')),
     url(r'^$', views.home, name = 'home'),
 ]
 
