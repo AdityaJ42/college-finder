@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import os
 from os import listdir
 from os.path import isfile, join
 import pickle
@@ -10,7 +11,9 @@ from .forms import CollegeForm
 
 def predictor(student):
 	to_test = student
-	mypath = '/home/aditya/Desktop/django/college_finder/colleges/ml/'
+	settings_dir = os.path.dirname(__file__)
+	PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+	mypath = PROJECT_ROOT + '/colleges/ml/'
 	all_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 	colleges = []
 
