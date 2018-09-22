@@ -6,7 +6,6 @@ from sign_in.models import Profile
 from django.http import HttpResponse
 from .models import College
 from .forms import CollegeForm
-from .filters import CollegeFilter
 
 
 def predictor(student):

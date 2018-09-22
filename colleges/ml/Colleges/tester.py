@@ -3,7 +3,10 @@ import pandas as pd
 import pickle
 import os
 
-pathname = '/home/aditya/Desktop/django/college_finder/colleges/ml/Colleges'
+settings_dir = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+
+pathname = PROJECT_ROOT + '/Colleges'
 files = os.listdir(pathname)
 
 for datasheet in files:

@@ -8,9 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
 	if request.user.is_authenticated:
-		profile = Profile.objects.get(user = request.user)
-		return HttpResponse("<h1>Welcome {}</h1>".format(profile))
-	return HttpResponse("Hello")
+		return redirect('colleges:search')
+	return redirect('login/')
 
 def register(request):
 	if request.method == "POST":
