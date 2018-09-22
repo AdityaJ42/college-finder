@@ -54,6 +54,9 @@ def update(request):
 		new_score = request.POST.get('score')
 		new_cgpa = request.POST.get('cgpa')
 
+		if (int)(new_score) > 340 or (int)(new_cgpa) > 10:
+			return render(request, 'sign_in/update.html')
+
 		profile.gre = new_score
 		profile.cgpa = new_cgpa
 		profile.save()
