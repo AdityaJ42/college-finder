@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  	<head>
+  		<title>College Finder</title>
+
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Raleway">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.0/font/css/open-iconic-bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>	
+
+  	</head>
+  	<body>  
+		<section class="parallax">
+			<h2>Welcome to College Finder</h2>
+			<br><br>
+			<a href="#toggle" class="btn-get-started">Get Started</a>
+		</section>
+		<br>
+		<!-- Main -->
+		<div class="wrapper" >
+		    <!-- Sidebar -->
+		    <nav id="sidebar" style="border:1px solid #FF5733; background-color:#FF5733;">
+		        <div class="sidebar-header">
+		            <h4>Hello <a href="{% url 'sign_in:profile' %}">{{ request.user.username }}</a></h4>
+		        </div>
+		        <ul class="list-unstyled components" >
+		            <li>
+		            	<a href="{% url 'sign_in:update' %}">Update Profile</a>
+		            </li>
+		            <br><br>	          
+		            <p>Filter By:</p>
+		            <li>
+		                <span>Budget</span>	      
+			            <form method="post">
+			            	{% csrf_token %}
+			            	<li><input id="end" type="text" name="maxRange" placeholder="End"></li><br>
+			            	<li><a href="{% url 'colleges:search' %}"><button type="submit" class="btn">Search</button></a>
+			            </form>
+		            </li>
+		            
+		            
+		            <br><br>
+		        </ul>
+		    </nav>
+		    <div id="content">
+<!-- 		    <center> -->
+			    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+			        <div class="container-fluid">
+			            <button type="button" id="sidebarCollapse" class="btn btn-info">
+			                <i class="fas fa-align-left"></i>
+			                <span id="toggle">Toggle Sidebar</span>
+			            </button>		            
+			        </div>				        		    
+			    </nav>
+			    <br><br>	
+			    <div class="position">		
+			    	{% block content %}
+			    	{% endblock %}
+				</div>					  
+			</div>
+		</div>
+		<br><br><br>
+  	</body>
+</html>	   			

@@ -1,0 +1,12 @@
+{% extends 'colleges/home.html' %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<label>New GRE Score: </label>
+	<input type="text" name="score">
+	<label>New CGPA: </label>
+	<input type="text" name="cgpa">
+	<button type="submit">Submit</button>
+</form>
+{% endblock %}

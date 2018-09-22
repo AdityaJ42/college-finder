@@ -6,10 +6,10 @@ from sign_in.models import Profile
 from django.http import HttpResponse
 from .models import College
 from .forms import CollegeForm
+from .filters import CollegeFilter
 
 
 def predictor(student):
-	print(student)
 	to_test = student
 	mypath = '/home/aditya/Desktop/django/college_finder/colleges/ml/'
 	all_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
@@ -29,18 +29,17 @@ def predictor(student):
 	return colleges
 
 
-def checker(request):
-	if request.user.is_authenticated:
-		user = request.user
-		profile = Profile.objects.get(user = user)
-		possible_colleges = predictor([[profile.gre, profile.cgpa]])
-		college_list = []
-		for college in possible_colleges:
-			college_details = College.objects.get(name = college)
-			college_list.append(college_details)
-		return render(request, 'colleges/college_list.html', {'college_list': college_list})
-	else:
-		return redirect('/login/')
+def checker(user):	
+	profile = Profile.objects.get(user = user)
+	possible_colleges = predictor([[profile.gre, profile.cgpa]])
+
+	college_list = []
+
+	for college in possible_colleges:
+		college_details = College.objects.get(name = college)
+		college_list.append(college_details)
+
+	return college_list
 
 
 def add_college(request):
@@ -55,26 +54,22 @@ def add_college(request):
 			college_form = CollegeForm()
 		return render(request, 'colleges/add.html', {'college_form': college_form})
 
-
-def profile(request):
+def search(request):
 	if request.user.is_authenticated:
 		user = request.user
-		profile = Profile.objects.get(user = user)
-		return render(request, 'sign_in/profile.html', {'profile': profile})
-	return redirect('login/')
+		colleges = checker(user)
+		colleges_copy = []
+		# print(len(colleges_copy))
+		maxCost = request.POST.get('maxRange')
+		# print(colleges_copy)
+		if maxCost is not None:
+			maxCost = (int)(maxCost)
 
-
-def update(request):
-	if request.user.is_authenticated:
-		if request.method == 'POST':
-			profile = Profile.objects.get(user = request.user)
-
-			new_score = request.POST.get('score')
-			new_cgpa = request.POST.get('cgpa')
-
-			profile.gre = new_score
-			profile.cgpa = new_cgpa
-			profile.save()
-			return redirect('sign_in:profile')
-		return redirect('sign_in:update')
-	return redirect('login/')
+			for college in colleges:
+				# print(college.average_cost, maxCost, college)
+				if college.average_cost <= maxCost:
+					colleges_copy.append(college)
+		else:
+			colleges_copy = colleges
+		print(colleges_copy)
+		return render(request, 'colleges/college_list.html', {'colleges_copy': colleges_copy})

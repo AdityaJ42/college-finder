@@ -1,7 +1,18 @@
-<h1>College List</h1>
+{% extends 'colleges/home.html' %}
 
-<ol>
-	{% for college in college_list %}
-	<li>{{ college.name }}</li>
+{% block content %}
+	{% for college in colleges_copy %}
+	<div class="row">			
+		<div class="col-sm-12 col-md-12 col-lg-6">
+			<div class="card">
+			  	<div class="card-body">
+				    <h5 class="card-title">{{ college.name }}</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Location: {{ college.location }}</h6>
+				    <p class="card-text">Average Cost: {{ college.average_cost }} lakhs (2 years)</p>
+			    	<a href="{{ college.website }}" class="card-link">College Website</a>
+			  	</div>
+			</div>
+		</div>															
+	</div> 
 	{% endfor %}
-</ol>
+{% endblock %}
