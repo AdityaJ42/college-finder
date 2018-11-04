@@ -1,6 +1,6 @@
 # College-finder
 
-# Problem Statement
+## Problem Statement
 Create a web-based portal where students can enter the GRE score, CGPA and other parameters and can get a list of universities where the probability of admission for a Masters Degree is high.
 
 # Implementation
