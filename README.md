@@ -31,6 +31,6 @@ Apart from this, if a student appears for an exam again or their score changes, 
 
 
 Team Members:
-1. Aditya Jeswani (Github: https://github.com/AdityaJ42)
+1. [Aditya Jeswani](https://github.com/AdityaJ42)
 2. Akshat Jain    (Github: https://github.com/Akshatt)
 3. Devansh Dalal  (Github: https://github.com/da2ash)
